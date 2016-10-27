@@ -17,7 +17,7 @@ Integrate::Integrate(Method method, double eps, const std::function<double(doubl
             this->method = new MPIFarmMethod(eps, f);
             break;
         default:
-            throw "Unsupported integration method: " + std::to_string(method);
+            throw "Unsupported integration method: " + std::to_string((long long) method);
     }
 }
 
