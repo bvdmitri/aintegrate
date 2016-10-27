@@ -1,0 +1,6 @@
+set(SOURCE ${SOURCE}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Integrate.cpp
+    PARENT_SCOPE)
+set(HEADER ${HEADER}
+    ${CMAKE_CURRENT_SOURCE_DIR}/Integrate.h
+    PARENT_SCOPE)

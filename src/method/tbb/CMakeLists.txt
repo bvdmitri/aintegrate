@@ -1,0 +1,6 @@
+set(SOURCE ${SOURCE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/TBBMethod.cpp
+        PARENT_SCOPE)
+set(HEADER ${HEADER}
+        ${CMAKE_CURRENT_SOURCE_DIR}/TBBMethod.h
+        PARENT_SCOPE)

@@ -1,0 +1,10 @@
+set(SOURCE ${SOURCE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/Farm.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Worker.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/MPIFarmMethod.cpp
+        PARENT_SCOPE)
+set(HEADER ${HEADER}
+        ${CMAKE_CURRENT_SOURCE_DIR}/Farm.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/Worker.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/MPIFarmMethod.h
+        PARENT_SCOPE)
