@@ -2,6 +2,7 @@
 #define INTEGRATE_PARAMETERSREADER_H
 
 #include <string>
+#include <cstring>
 #include <cstdlib>
 
 class ParametersReader {
