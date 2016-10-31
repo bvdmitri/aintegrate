@@ -38,6 +38,7 @@ int main(int argc, char **argv) {
     }
     test(f1, p1);
     test(f2, p2);
+    test(f3, p2);
     if (rank == 0) {
         printf("============================\n");
     }
