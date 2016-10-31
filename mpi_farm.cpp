@@ -25,15 +25,21 @@ void test(const std::function<double(double)> &f, const ParametersReader &p) {
 
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
-    int size;
+    int size, rank;
     MPI_Comm_size(MPI_COMM_WORLD,  &size);
+    MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     ParametersReader p1("p1.txt");
     ParametersReader p2("p2.txt");
 
-    printf("MPI_FARM: %d nodes", size);
+    if (rank == 0) {
+        printf("MPI_FARM: %d nodes\n", size);
+    }
     test(f1, p1);
     test(f2, p2);
-    printf("============================");
+    if (rank == 0) {
+        printf("============================\n");
+    }
+    
 
     MPI_Finalize();
     return 0;
