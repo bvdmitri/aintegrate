@@ -9,7 +9,7 @@ const std::function<double(double)> &f1 = [](double x) {
 };
 
 const std::function<double(double)> &f2 = [](double x) {
-	return (sin(sin(sin(sin(sin(sin(x + sqrt(x) + sqrt(sqrt(x)))))))) * cos(cos(cos(cos(cos(log(x)))))));
+	return (sin(sin(sin(sin(sin(sin(x + sqrt(x) + sqrt(sqrt(x)))))))) * cos(cos(cos(cos(cos(log(x + 1)))))));
 };
 
 
