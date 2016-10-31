@@ -27,11 +27,15 @@ void test(const std::function<double(double)> &f, const ParametersReader& p) {
 
 int main(int argc, char **argv) {
     MPI_Init(&argc, &argv);
+    int size;
+    MPI_Comm_size(MPI_COMM_WORLD,  &size);
     ParametersReader p1("p1.txt");
     ParametersReader p2("p2.txt");
 
+    printf("MPI_TBB: %d nodes", size);
     test(f1, p1);
     test(f2, p2);
+    printf("============================");
 
     MPI_Finalize();
     return 0;
