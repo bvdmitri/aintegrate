@@ -2,6 +2,7 @@
 
 ParametersReader::ParametersReader(std::string path) {
     this->answer = false;
+    this->skip = false;
     FILE *parameters_file = fopen(path.c_str(), "r");
     if (!parameters_file) {
         fprintf(stderr, "No parameters file found\n");
@@ -33,6 +34,13 @@ ParametersReader::ParametersReader(std::string path) {
                 this->answer = true;
             }
         }
+
+        if (strcmp(parameterName, "skip") == 0) {
+            if (strcmp(parameterValue, "true") == 0) {
+                this->skip = true;
+            }
+        }
+
     }
     free(parameterValue);
     free(parameterName);

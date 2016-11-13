@@ -10,6 +10,7 @@ public:
     double a, b;
     double eps;
     bool answer;
+    bool skip;
 
     ParametersReader(std::string path);
     ParametersReader(const ParametersReader &other);

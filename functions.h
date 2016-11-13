@@ -13,11 +13,15 @@ const std::function<double(double)> &f2 = [](double x) {
 };
 
 const std::function<double(double)> &f3 = [](double x) -> double {
-	if (x <= 10000) {
-		return (sin(sin(sin(sin(sin(sin(x + sqrt(x) + sqrt(sqrt(x)))))))) * cos(cos(cos(cos(cos(log(x + 1)))))));	
+	if (x <= 10 * M_PI) {
+		return (sin(500 * x));
 	} else {
-		return (double) 0.249609;
+		return (double) 0.0;
 	}
+};
+
+const std::function<double(double)> &f4 = [](double x) -> double {
+    return sin(500 * x);
 };
 
 #endif

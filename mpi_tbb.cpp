@@ -5,6 +5,10 @@
 #include "functions.h"
 
 void test(const std::function<double(double)> &f, const ParametersReader& p) {
+    if (p.skip) {
+        printf("Function skipped\n");
+        return;
+    }
     Integrate mpi_tbb = Integrate(Method::MPI_TBB, 0.001, f);
 
     Timer timer("MPI_TBB");
@@ -30,15 +34,19 @@ int main(int argc, char **argv) {
     int size, rank;
     MPI_Comm_size(MPI_COMM_WORLD,  &size);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+
     ParametersReader p1("p1.txt");
     ParametersReader p2("p2.txt");
+    ParametersReader p3("p3.txt");
+    ParametersReader p4("p4.txt");
 
     if (rank == 0) {
         printf("MPI_TBB: %d nodes\n", size);
     }
     test(f1, p1);
     test(f2, p2);
-    test(f3, p2);
+    test(f3, p3);
+    test(f4, p4);
     if (rank == 0) {
         printf("============================\n");
     }
