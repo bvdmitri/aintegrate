@@ -45,6 +45,7 @@ ParametersReader::ParametersReader(std::string path) {
     free(parameterValue);
     free(parameterName);
     free(tmp);
+    fclose(parameters_file);
 }
 
 ParametersReader::ParametersReader(const ParametersReader &other) : a(other.a), b(other.b), eps(other.eps), answer(other.answer) {}

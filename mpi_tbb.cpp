@@ -12,7 +12,7 @@ void test(const std::function<double(double)> &f, const ParametersReader& p) {
         printf("Function skipped\n");
         return;
     }
-    Integrate mpi_tbb = Integrate(Method::MPI_TBB, 0.001, f);
+    Integrate mpi_tbb = Integrate(Method::MPI_TBB, p.eps, f);
 
     Timer timer("MPI_TBB");
     timer.start();
@@ -47,6 +47,7 @@ int main(int argc, char **argv) {
     test(f2, p2);
     test(f3, p3);
     test(f4, p4);
+
     if (rank == 0) {
         printf("============================\n");
     }

@@ -12,7 +12,7 @@ void test(const std::function<double(double)> &f, const ParametersReader &p) {
         printf("Function skipped\n");
         return;
     }
-    Integrate mpi_farm = Integrate(Method::MPI_FARM, 0.001, f);
+    Integrate mpi_farm = Integrate(Method::MPI_FARM, p.eps, f);
 
     Timer timer("MPI_FARM");
     timer.start();
