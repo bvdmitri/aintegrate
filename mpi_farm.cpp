@@ -5,7 +5,10 @@
 #include "functions.h"
 
 void test(const std::function<double(double)> &f, const ParametersReader &p) {
-    if (p.skip) {
+    int id;
+    MPI_Comm_rank(MPI_COMM_WORLD, &id);
+
+    if (p.skip && id == 0) {
         printf("Function skipped\n");
         return;
     }
@@ -16,8 +19,7 @@ void test(const std::function<double(double)> &f, const ParametersReader &p) {
     double answer = mpi_farm.integrate(p.a, p.b);
     timer.end();
 
-    int id;
-    MPI_Comm_rank(MPI_COMM_WORLD, &id);
+
 
     if (id == 0) {
         timer.printExecutionTime();
