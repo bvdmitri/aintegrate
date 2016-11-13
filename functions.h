@@ -14,6 +14,7 @@ const std::function<double(double)> &f2 = [](double x) {
 
 const std::function<double(double)> &f3 = [](double x) -> double {
 	if (x <= 10 * M_PI) {
+
 		return (sin(500 * x));
 	} else {
 		return (double) 0.0;

@@ -8,8 +8,10 @@ void test(const std::function<double(double)> &f, const ParametersReader& p) {
     int id;
     MPI_Comm_rank(MPI_COMM_WORLD, &id);
 
-    if (p.skip && id == 0) {
-        printf("Function skipped\n");
+    if (p.skip) {
+        if (id == 0) {
+            printf("Function skipped\n");
+        }
         return;
     }
     Integrate mpi_tbb = Integrate(Method::MPI_TBB, p.eps, f);

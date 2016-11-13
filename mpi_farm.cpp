@@ -8,18 +8,19 @@ void test(const std::function<double(double)> &f, const ParametersReader &p) {
     int id;
     MPI_Comm_rank(MPI_COMM_WORLD, &id);
 
-    if (p.skip && id == 0) {
-        printf("Function skipped\n");
+    if (p.skip) {
+        if (id == 0) {
+            printf("Function skipped\n");
+        }
         return;
     }
+
     Integrate mpi_farm = Integrate(Method::MPI_FARM, p.eps, f);
 
     Timer timer("MPI_FARM");
     timer.start();
     double answer = mpi_farm.integrate(p.a, p.b);
     timer.end();
-
-
 
     if (id == 0) {
         timer.printExecutionTime();
@@ -48,10 +49,10 @@ int main(int argc, char **argv) {
     test(f2, p2);
     test(f3, p3);
     test(f4, p4);
+
     if (rank == 0) {
         printf("============================\n");
     }
-    
 
     MPI_Finalize();
     return 0;
